@@ -1,0 +1,499 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="component_event" id="1" x="863" y="-821">
+    <mutation component_type="Button" instance_name="SAVEButton1" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">SAVEButton1</field>
+    <statement name="DO">
+      <block type="lists_add_items" id="2" inline="false">
+        <mutation items="1"></mutation>
+        <value name="LIST">
+          <block type="lexical_variable_get" id="3">
+            <field name="VAR">global notes</field>
+          </block>
+        </value>
+        <value name="ITEM0">
+          <block type="text_join" id="4" inline="false">
+            <mutation items="6"></mutation>
+            <value name="ADD0">
+              <block type="component_set_get" id="5">
+                <mutation component_type="TextBox" set_or_get="get" property_name="Text" is_generic="false" instance_name="TextBox1"></mutation>
+                <field name="COMPONENT_SELECTOR">TextBox1</field>
+                <field name="PROP">Text</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="6">
+                <field name="TEXT">\n</field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="text" id="7">
+                <field name="TEXT">&gt; </field>
+              </block>
+            </value>
+            <value name="ADD3">
+              <block type="component_method" id="8" inline="false">
+                <mutation component_type="Clock" method_name="FormatDateTime" is_generic="false" instance_name="Clock1"></mutation>
+                <field name="COMPONENT_SELECTOR">Clock1</field>
+                <value name="ARG0">
+                  <block type="component_method" id="9">
+                    <mutation component_type="Clock" method_name="Now" is_generic="false" instance_name="Clock1"></mutation>
+                    <field name="COMPONENT_SELECTOR">Clock1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="ADD4">
+              <block type="text" id="10">
+                <field name="TEXT">\n</field>
+              </block>
+            </value>
+            <value name="ADD5">
+              <block type="text" id="11">
+                <field name="TEXT">\n</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="12" inline="false">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="NOTESLabel1"></mutation>
+            <field name="COMPONENT_SELECTOR">NOTESLabel1</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="text_join" id="13" inline="false">
+                <mutation items="8"></mutation>
+                <value name="ADD0">
+                  <block type="component_set_get" id="14">
+                    <mutation component_type="TextBox" set_or_get="get" property_name="Text" is_generic="false" instance_name="TextBox1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TextBox1</field>
+                    <field name="PROP">Text</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="15">
+                    <field name="TEXT">\n</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id="16">
+                    <field name="TEXT">&gt; </field>
+                  </block>
+                </value>
+                <value name="ADD3">
+                  <block type="component_method" id="17" inline="false">
+                    <mutation component_type="Clock" method_name="FormatDateTime" is_generic="false" instance_name="Clock1"></mutation>
+                    <field name="COMPONENT_SELECTOR">Clock1</field>
+                    <value name="ARG0">
+                      <block type="component_method" id="18">
+                        <mutation component_type="Clock" method_name="Now" is_generic="false" instance_name="Clock1"></mutation>
+                        <field name="COMPONENT_SELECTOR">Clock1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="ADD4">
+                  <block type="text" id="19">
+                    <field name="TEXT">\n</field>
+                  </block>
+                </value>
+                <value name="ADD5">
+                  <block type="text" id="20">
+                    <field name="TEXT">\n</field>
+                  </block>
+                </value>
+                <value name="ADD6">
+                  <block type="component_set_get" id="21">
+                    <mutation component_type="Label" set_or_get="get" property_name="Text" is_generic="false" instance_name="NOTESLabel1"></mutation>
+                    <field name="COMPONENT_SELECTOR">NOTESLabel1</field>
+                    <field name="PROP">Text</field>
+                  </block>
+                </value>
+                <value name="ADD7">
+                  <block type="text" id="22">
+                    <field name="TEXT">\n</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="23" inline="false">
+                <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                <value name="ARG0">
+                  <block type="text" id="24">
+                    <field name="TEXT">notes</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="lexical_variable_get" id="25">
+                    <field name="VAR">global notes</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="26" inline="false">
+                    <mutation component_type="TextBox" set_or_get="set" property_name="Text" is_generic="false" instance_name="TextBox1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TextBox1</field>
+                    <field name="PROP">Text</field>
+                    <value name="VALUE">
+                      <block type="text" id="27">
+                        <field name="TEXT"></field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="global_declaration" id="28" inline="false" x="67" y="-767">
+    <field name="NAME">notes</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="29">
+        <mutation items="0"></mutation>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="30" x="26" y="-680">
+    <mutation component_type="Form" instance_name="Screen1" event_name="Initialize"></mutation>
+    <field name="COMPONENT_SELECTOR">Screen1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="31" inline="false">
+        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="DATELabel1"></mutation>
+        <field name="COMPONENT_SELECTOR">DATELabel1</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="text_join" id="32" inline="false">
+            <mutation items="3"></mutation>
+            <value name="ADD0">
+              <block type="component_method" id="33" inline="false">
+                <mutation component_type="Clock" method_name="WeekdayName" is_generic="false" instance_name="Clock1"></mutation>
+                <field name="COMPONENT_SELECTOR">Clock1</field>
+                <value name="ARG0">
+                  <block type="component_method" id="34">
+                    <mutation component_type="Clock" method_name="Now" is_generic="false" instance_name="Clock1"></mutation>
+                    <field name="COMPONENT_SELECTOR">Clock1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="35">
+                <field name="TEXT">\n</field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="component_method" id="36" inline="false">
+                <mutation component_type="Clock" method_name="FormatDate" is_generic="false" instance_name="Clock1"></mutation>
+                <field name="COMPONENT_SELECTOR">Clock1</field>
+                <value name="ARG0">
+                  <block type="component_method" id="37">
+                    <mutation component_type="Clock" method_name="Now" is_generic="false" instance_name="Clock1"></mutation>
+                    <field name="COMPONENT_SELECTOR">Clock1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if" id="38" inline="false">
+            <value name="IF0">
+              <block type="lists_is_list" id="39" inline="false">
+                <value name="ITEM">
+                  <block type="component_method" id="40" inline="false">
+                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                    <value name="ARG0">
+                      <block type="text" id="41">
+                        <field name="TEXT">notes</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="text" id="42">
+                        <field name="TEXT"></field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="lexical_variable_set" id="43" inline="false">
+                <field name="VAR">global notes</field>
+                <value name="VALUE">
+                  <block type="component_method" id="44" inline="false">
+                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                    <value name="ARG0">
+                      <block type="text" id="45">
+                        <field name="TEXT">notes</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="text" id="46">
+                        <field name="TEXT"></field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_forEach" id="47" inline="false">
+                    <field name="VAR">item</field>
+                    <value name="LIST">
+                      <block type="lexical_variable_get" id="48">
+                        <field name="VAR">global notes</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="component_set_get" id="49" inline="false">
+                        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="NOTESLabel1"></mutation>
+                        <field name="COMPONENT_SELECTOR">NOTESLabel1</field>
+                        <field name="PROP">Text</field>
+                        <value name="VALUE">
+                          <block type="text_join" id="50" inline="false">
+                            <mutation items="3"></mutation>
+                            <value name="ADD0">
+                              <block type="lexical_variable_get" id="51">
+                                <field name="VAR">item</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="component_set_get" id="52">
+                                <mutation component_type="Label" set_or_get="get" property_name="Text" is_generic="false" instance_name="NOTESLabel1"></mutation>
+                                <field name="COMPONENT_SELECTOR">NOTESLabel1</field>
+                                <field name="PROP">Text</field>
+                              </block>
+                            </value>
+                            <value name="ADD2">
+                              <block type="text" id="53">
+                                <field name="TEXT">\n</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="54" x="848" y="-74">
+    <mutation component_type="ListPicker" instance_name="sharingListPicker1" event_name="BeforePicking"></mutation>
+    <field name="COMPONENT_SELECTOR">sharingListPicker1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="55" inline="false">
+        <mutation component_type="ListPicker" set_or_get="set" property_name="Elements" is_generic="false" instance_name="sharingListPicker1"></mutation>
+        <field name="COMPONENT_SELECTOR">sharingListPicker1</field>
+        <field name="PROP">Elements</field>
+        <value name="VALUE">
+          <block type="lexical_variable_get" id="56">
+            <field name="VAR">global notes</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="57" x="11" y="47">
+    <mutation component_type="ListPicker" instance_name="DELETEListPicker1" event_name="BeforePicking"></mutation>
+    <field name="COMPONENT_SELECTOR">DELETEListPicker1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="58" inline="false">
+        <mutation component_type="ListPicker" set_or_get="set" property_name="Elements" is_generic="false" instance_name="DELETEListPicker1"></mutation>
+        <field name="COMPONENT_SELECTOR">DELETEListPicker1</field>
+        <field name="PROP">Elements</field>
+        <value name="VALUE">
+          <block type="lexical_variable_get" id="59">
+            <field name="VAR">global notes</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="60" x="861" y="20">
+    <mutation component_type="ListPicker" instance_name="sharingListPicker1" event_name="AfterPicking"></mutation>
+    <field name="COMPONENT_SELECTOR">sharingListPicker1</field>
+    <statement name="DO">
+      <block type="component_method" id="61" inline="false">
+        <mutation component_type="Sharing" method_name="ShareMessage" is_generic="false" instance_name="Sharing1"></mutation>
+        <field name="COMPONENT_SELECTOR">Sharing1</field>
+        <value name="ARG0">
+          <block type="text_segment" id="62" inline="false">
+            <value name="TEXT">
+              <block type="component_set_get" id="63">
+                <mutation component_type="ListPicker" set_or_get="get" property_name="Selection" is_generic="false" instance_name="sharingListPicker1"></mutation>
+                <field name="COMPONENT_SELECTOR">sharingListPicker1</field>
+                <field name="PROP">Selection</field>
+              </block>
+            </value>
+            <value name="START">
+              <block type="math_number" id="64">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <value name="LENGTH">
+              <block type="math_subtract" id="65" inline="true">
+                <value name="A">
+                  <block type="text_length" id="66" inline="false">
+                    <value name="VALUE">
+                      <block type="component_set_get" id="67">
+                        <mutation component_type="ListPicker" set_or_get="get" property_name="Selection" is_generic="false" instance_name="sharingListPicker1"></mutation>
+                        <field name="COMPONENT_SELECTOR">sharingListPicker1</field>
+                        <field name="PROP">Selection</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="68">
+                    <field name="NUM">25</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="69" x="17" y="152">
+    <mutation component_type="ListPicker" instance_name="DELETEListPicker1" event_name="AfterPicking"></mutation>
+    <field name="COMPONENT_SELECTOR">DELETEListPicker1</field>
+    <statement name="DO">
+      <block type="lists_remove_item" id="70" inline="false">
+        <value name="LIST">
+          <block type="lexical_variable_get" id="71">
+            <field name="VAR">global notes</field>
+          </block>
+        </value>
+        <value name="INDEX">
+          <block type="component_set_get" id="72">
+            <mutation component_type="ListPicker" set_or_get="get" property_name="SelectionIndex" is_generic="false" instance_name="DELETEListPicker1"></mutation>
+            <field name="COMPONENT_SELECTOR">DELETEListPicker1</field>
+            <field name="PROP">SelectionIndex</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="73" inline="false">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="NOTESLabel1"></mutation>
+            <field name="COMPONENT_SELECTOR">NOTESLabel1</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="text" id="74">
+                <field name="TEXT"></field>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="75" inline="false">
+                <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                <value name="ARG0">
+                  <block type="text" id="76">
+                    <field name="TEXT">notes</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="lexical_variable_get" id="77">
+                    <field name="VAR">global notes</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="78" inline="false">
+                    <value name="IF0">
+                      <block type="lists_is_list" id="79" inline="false">
+                        <value name="ITEM">
+                          <block type="component_method" id="80" inline="false">
+                            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                            <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                            <value name="ARG0">
+                              <block type="text" id="81">
+                                <field name="TEXT">notes</field>
+                              </block>
+                            </value>
+                            <value name="ARG1">
+                              <block type="text" id="82">
+                                <field name="TEXT"></field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="lexical_variable_set" id="83" inline="false">
+                        <field name="VAR">global notes</field>
+                        <value name="VALUE">
+                          <block type="component_method" id="84" inline="false">
+                            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                            <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                            <value name="ARG0">
+                              <block type="text" id="85">
+                                <field name="TEXT">notes</field>
+                              </block>
+                            </value>
+                            <value name="ARG1">
+                              <block type="text" id="86">
+                                <field name="TEXT"></field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_forEach" id="87" inline="false">
+                            <field name="VAR">item</field>
+                            <value name="LIST">
+                              <block type="lexical_variable_get" id="88">
+                                <field name="VAR">global notes</field>
+                              </block>
+                            </value>
+                            <statement name="DO">
+                              <block type="component_set_get" id="89" inline="false">
+                                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="NOTESLabel1"></mutation>
+                                <field name="COMPONENT_SELECTOR">NOTESLabel1</field>
+                                <field name="PROP">Text</field>
+                                <value name="VALUE">
+                                  <block type="text_join" id="90" inline="false">
+                                    <mutation items="3"></mutation>
+                                    <value name="ADD0">
+                                      <block type="component_set_get" id="91">
+                                        <mutation component_type="Label" set_or_get="get" property_name="Text" is_generic="false" instance_name="NOTESLabel1"></mutation>
+                                        <field name="COMPONENT_SELECTOR">NOTESLabel1</field>
+                                        <field name="PROP">Text</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="lexical_variable_get" id="92">
+                                        <field name="VAR">item</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD2">
+                                      <block type="text" id="93">
+                                        <field name="TEXT">\n</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="119" language-version="18"></yacodeblocks>
+</xml>

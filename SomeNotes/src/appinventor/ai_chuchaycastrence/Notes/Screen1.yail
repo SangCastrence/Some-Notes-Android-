@@ -1,0 +1,249 @@
+#|
+$Source $Yail
+|#
+
+(define-form appinventor.ai_chuchaycastrence.Notes.Screen1 Screen1)
+(require <com.google.youngandroid.runtime>)
+
+(def g$notes (call-yail-primitive make-yail-list (*list-for-runtime* ) '() "make a list"))
+;;; Screen1
+
+(do-after-form-creation (set-and-coerce-property! 'Screen1 'AppName "Some Notes" 'text)
+ (set-and-coerce-property! 'Screen1 'BackgroundColor #x00FFFFFF 'number)
+ (set-and-coerce-property! 'Screen1 'BackgroundImage "notebook340-5701.png" 'text)
+ (set-and-coerce-property! 'Screen1 'Icon "icon.png" 'text)
+ (set-and-coerce-property! 'Screen1 'Scrollable #t 'boolean)
+ (set-and-coerce-property! 'Screen1 'Title "Some Notes" 'text)
+)
+
+(define-event Screen1 Initialize()(set-this-form)
+    (set-and-coerce-property! 'DATELabel1 'Text (call-yail-primitive string-append (*list-for-runtime* (call-component-method 'Clock1 'WeekdayName (*list-for-runtime* (call-component-method 'Clock1 'Now (*list-for-runtime*) '())) '(InstantInTime)) "\n" (call-component-method 'Clock1 'FormatDate (*list-for-runtime* (call-component-method 'Clock1 'Now (*list-for-runtime*) '())) '(InstantInTime)) ) '(text text text ) "join") 'text)(if (call-yail-primitive yail-list? (*list-for-runtime* (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* "notes"  "") '(text any)) ) '(any) "is a list?") (begin   (set-var! g$notes (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* "notes"  "") '(text any)))(foreach $item (begin   (set-and-coerce-property! 'NOTESLabel1 'Text (call-yail-primitive string-append (*list-for-runtime* (lexical-value $item) (get-property 'NOTESLabel1 'Text) "\n" ) '(text text text ) "join") 'text)) (get-var g$notes)))))
+;;; TableArrangement4
+
+(add-component Screen1 TableArrangement TableArrangement4 
+)
+
+;;; TextBox1
+
+(add-component TableArrangement4 TextBox TextBox1 
+(set-and-coerce-property! 'TextBox1 'FontSize 16 'number)
+
+(set-and-coerce-property! 'TextBox1 'Hint "Enter Your Note" 'text)
+
+(set-and-coerce-property! 'TextBox1 'Column 1 'number)
+
+(set-and-coerce-property! 'TextBox1 'Row 0 'number)
+
+(set-and-coerce-property! 'TextBox1 'Width 280 'number)
+
+)
+
+;;; Label7
+
+(add-component TableArrangement4 Label Label7 
+(set-and-coerce-property! 'Label7 'Column 0 'number)
+
+(set-and-coerce-property! 'Label7 'Row 0 'number)
+
+(set-and-coerce-property! 'Label7 'Width 20 'number)
+
+)
+
+;;; DATELabel1
+
+(add-component TableArrangement4 Label DATELabel1 
+(set-and-coerce-property! 'DATELabel1 'FontItalic #t 'boolean)
+
+(set-and-coerce-property! 'DATELabel1 'FontSize 18 'number)
+
+(set-and-coerce-property! 'DATELabel1 'TextAlignment 1 'number)
+
+(set-and-coerce-property! 'DATELabel1 'Column 1 'number)
+
+(set-and-coerce-property! 'DATELabel1 'Row 1 'number)
+
+(set-and-coerce-property! 'DATELabel1 'Width 100 'number)
+
+)
+
+;;; TableArrangement1
+
+(add-component Screen1 TableArrangement TableArrangement1 
+(set-and-coerce-property! 'TableArrangement1 'Columns 4 'number)
+
+(set-and-coerce-property! 'TableArrangement1 'Rows 4 'number)
+
+)
+
+;;; Label1
+
+(add-component TableArrangement1 Label Label1 
+(set-and-coerce-property! 'Label1 'Column 0 'number)
+
+(set-and-coerce-property! 'Label1 'Row 0 'number)
+
+(set-and-coerce-property! 'Label1 'Width 20 'number)
+
+)
+
+;;; Label9
+
+(add-component TableArrangement1 Label Label9 
+(set-and-coerce-property! 'Label9 'Column 2 'number)
+
+(set-and-coerce-property! 'Label9 'Row 1 'number)
+
+(set-and-coerce-property! 'Label9 'Width 30 'number)
+
+)
+
+;;; Label3
+
+(add-component TableArrangement1 Label Label3 
+(set-and-coerce-property! 'Label3 'Column 3 'number)
+
+(set-and-coerce-property! 'Label3 'Row 4 'number)
+
+(set-and-coerce-property! 'Label3 'Height 20 'number)
+
+)
+
+;;; Label2
+
+(add-component TableArrangement1 Label Label2 
+(set-and-coerce-property! 'Label2 'Column 3 'number)
+
+(set-and-coerce-property! 'Label2 'Row 2 'number)
+
+(set-and-coerce-property! 'Label2 'Height 20 'number)
+
+)
+
+;;; DELETEListPicker1
+
+(add-component TableArrangement1 ListPicker DELETEListPicker1 
+(set-and-coerce-property! 'DELETEListPicker1 'FontSize 18 'number)
+
+(set-and-coerce-property! 'DELETEListPicker1 'Image "delete1.png" 'text)
+
+(set-and-coerce-property! 'DELETEListPicker1 'TextColor #xFFFFFFFF 'number)
+
+(set-and-coerce-property! 'DELETEListPicker1 'Column 1 'number)
+
+(set-and-coerce-property! 'DELETEListPicker1 'Row 1 'number)
+
+)
+
+(define-event DELETEListPicker1 BeforePicking()(set-this-form)
+    (set-and-coerce-property! 'DELETEListPicker1 'Elements (get-var g$notes) 'list))
+(define-event DELETEListPicker1 AfterPicking()(set-this-form)
+    (call-yail-primitive yail-list-remove-item! (*list-for-runtime* (get-var g$notes) (get-property 'DELETEListPicker1 'SelectionIndex)) '(list number) "remove list item")(set-and-coerce-property! 'NOTESLabel1 'Text "" 'text)(call-component-method 'TinyDB1 'StoreValue (*list-for-runtime* "notes"  (get-var g$notes)) '(text any))(if (call-yail-primitive yail-list? (*list-for-runtime* (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* "notes"  "") '(text any)) ) '(any) "is a list?") (begin   (set-var! g$notes (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* "notes"  "") '(text any)))(foreach $item (begin   (set-and-coerce-property! 'NOTESLabel1 'Text (call-yail-primitive string-append (*list-for-runtime* (get-property 'NOTESLabel1 'Text) (lexical-value $item) "\n" ) '(text text text ) "join") 'text)) (get-var g$notes)))))
+;;; sharingListPicker1
+
+(add-component TableArrangement1 ListPicker sharingListPicker1 
+(set-and-coerce-property! 'sharingListPicker1 'FontSize 18 'number)
+
+(set-and-coerce-property! 'sharingListPicker1 'Image "share1.png" 'text)
+
+(set-and-coerce-property! 'sharingListPicker1 'TextColor #xFFFFFFFF 'number)
+
+(set-and-coerce-property! 'sharingListPicker1 'Column 2 'number)
+
+(set-and-coerce-property! 'sharingListPicker1 'Row 1 'number)
+
+)
+
+(define-event sharingListPicker1 BeforePicking()(set-this-form)
+    (set-and-coerce-property! 'sharingListPicker1 'Elements (get-var g$notes) 'list))
+(define-event sharingListPicker1 AfterPicking()(set-this-form)
+    (call-component-method 'Sharing1 'ShareMessage (*list-for-runtime* (call-yail-primitive string-substring (*list-for-runtime* (get-property 'sharingListPicker1 'Selection) 1 (call-yail-primitive - (*list-for-runtime* (call-yail-primitive string-length (*list-for-runtime* (get-property 'sharingListPicker1 'Selection)) '(text) "length") 25) '(number number) "-")) '(text number number) "segment")) '(text)))
+;;; SAVEButton1
+
+(add-component TableArrangement1 Button SAVEButton1 
+(set-and-coerce-property! 'SAVEButton1 'FontSize 18 'number)
+
+(set-and-coerce-property! 'SAVEButton1 'Image "done.png" 'text)
+
+(set-and-coerce-property! 'SAVEButton1 'TextColor #xFFFFFFFF 'number)
+
+(set-and-coerce-property! 'SAVEButton1 'Column 1 'number)
+
+(set-and-coerce-property! 'SAVEButton1 'Row 2 'number)
+
+)
+
+(define-event SAVEButton1 Click()(set-this-form)
+    (call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$notes) (call-yail-primitive string-append (*list-for-runtime* (get-property 'TextBox1 'Text) "\n" "> " (call-component-method 'Clock1 'FormatDateTime (*list-for-runtime* (call-component-method 'Clock1 'Now (*list-for-runtime*) '())) '(InstantInTime)) "\n" "\n" ) '(text text text text text text ) "join") ) '(list any ) "add items to list")(set-and-coerce-property! 'NOTESLabel1 'Text (call-yail-primitive string-append (*list-for-runtime* (get-property 'TextBox1 'Text) "\n" "> " (call-component-method 'Clock1 'FormatDateTime (*list-for-runtime* (call-component-method 'Clock1 'Now (*list-for-runtime*) '())) '(InstantInTime)) "\n" "\n" (get-property 'NOTESLabel1 'Text) "\n" ) '(text text text text text text text text ) "join") 'text)(call-component-method 'TinyDB1 'StoreValue (*list-for-runtime* "notes"  (get-var g$notes)) '(text any))(set-and-coerce-property! 'TextBox1 'Text "" 'text))
+;;; TableArrangement2
+
+(add-component Screen1 TableArrangement TableArrangement2 
+(set-and-coerce-property! 'TableArrangement2 'Rows 4 'number)
+
+)
+
+;;; labelLabel2
+
+(add-component TableArrangement2 Label labelLabel2 
+(set-and-coerce-property! 'labelLabel2 'FontItalic #t 'boolean)
+
+(set-and-coerce-property! 'labelLabel2 'Text "          Notes:" 'text)
+
+(set-and-coerce-property! 'labelLabel2 'TextColor #xFF888888 'number)
+
+(set-and-coerce-property! 'labelLabel2 'Column 1 'number)
+
+(set-and-coerce-property! 'labelLabel2 'Row 0 'number)
+
+)
+
+;;; Label4
+
+(add-component TableArrangement2 Label Label4 
+(set-and-coerce-property! 'Label4 'Column 0 'number)
+
+(set-and-coerce-property! 'Label4 'Row 0 'number)
+
+(set-and-coerce-property! 'Label4 'Width 30 'number)
+
+)
+
+;;; Label5
+
+(add-component TableArrangement2 Label Label5 
+(set-and-coerce-property! 'Label5 'Column 1 'number)
+
+(set-and-coerce-property! 'Label5 'Row 1 'number)
+
+(set-and-coerce-property! 'Label5 'Height 10 'number)
+
+)
+
+;;; NOTESLabel1
+
+(add-component TableArrangement2 Label NOTESLabel1 
+(set-and-coerce-property! 'NOTESLabel1 'FontSize 16 'number)
+
+(set-and-coerce-property! 'NOTESLabel1 'Column 1 'number)
+
+(set-and-coerce-property! 'NOTESLabel1 'Row 2 'number)
+
+(set-and-coerce-property! 'NOTESLabel1 'Width 300 'number)
+
+)
+
+;;; Clock1
+
+(add-component Screen1 Clock Clock1 
+)
+
+;;; TinyDB1
+
+(add-component Screen1 TinyDB TinyDB1 
+)
+
+;;; Sharing1
+
+(add-component Screen1 Sharing Sharing1 
+)
+
+(init-runtime)
